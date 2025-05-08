@@ -12,7 +12,12 @@ from agents import (Agent,
 from dotenv import dotenv_values
 config = dotenv_values(".env")
 
-# print(config.keys())
+"""
+This is an ai assistant that helps users learn German developed based on using agents-as-tools pattern.
+The lichtblick agent recvies a user message and then picks which agent to call, as tools. 
+In this case, it picks from two agents: vocabulary and sentence_analysis.
+"""
+
 OPENAI_API_KEY = config["OPENAI_API_KEY"]
 set_default_openai_key(OPENAI_API_KEY)
 
@@ -119,11 +124,6 @@ lichtblick_agent = Agent(
 
 async def submit_user_msg(message: str):
     """Process the user message through the multi-agent system."""
-    result = await Runner.run(lichtblick_agent, input=message)
-    return result.final_output
-
-if __name__ == "__main__":
-    text = "Hey, can you help me learn German?"
-    result = asyncio.run(submit_user_msg(text))
-    print("🤖 Lichtblick Example Response:")
-    print(result)
+    with trace("Lichtblick workflow"):
+        result = await Runner.run(lichtblick_agent, input=message)
+        return result.final_output
