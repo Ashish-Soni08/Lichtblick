@@ -1,1 +1,6 @@
 .python-version
+.env
+LICENSE
+/backend/.german-ai-assistant
+vibe_coding_context
+/backend/__pycache__
