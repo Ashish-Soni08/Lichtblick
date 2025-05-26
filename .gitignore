@@ -2,6 +2,7 @@
 backend/.env
 backend/.german-ai-assistant
 *.egg-info/
+vibe_coding_context/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
