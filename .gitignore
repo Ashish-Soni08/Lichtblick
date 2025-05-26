@@ -1,6 +1,7 @@
 # Added by Author: Ashish Soni
 backend/.env
 backend/.german-ai-assistant
+*.egg-info/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
